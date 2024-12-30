@@ -31,39 +31,69 @@
 
 	Created on Tuesday, January 22nd, 2019 at 01:10
 
+Module: Multiple Substitution Encryption (MSE)
+Description: Provides an engine for creating and solving puzzles using encryption and decryption mechanisms.
+
+Functions:
+- mse_cipher(msg, auto_copy=True): Encrypts a message using multiple algorithms.
+- mse_decipher(msg, auto_copy=False): Decrypts a message to its original form.
+
+Dependencies:
+- Uses Block A (`complexify` and `decomplexify`), Block B (`cipher` and `decipher`), and Block C (`obscur` and `remove_group_charac_b`).
+
+Author: enrongroup.fr
+Version: 28.0.0
+Date: January 30, 2024
 """
 
-__author__  = "Enron Group"
-__version__ = "27.0.3"
-__date__    = "29 décembre 2023"
-
 from pyperclip import copy
+from bloc_a import complexify, decomplexify
+from bloc_b import cipher, decipher
+from bloc_c import obscur, remove_group_charac_b
 
-from bloc_a import complexify,decomplexify
-from bloc_b import cipher,decipher
-from bloc_c import obscur,remove_group_charac_b
+def mse_cipher(msg, auto_copy=True):
+    """
+    Encrypts a message using a sequence of transformations.
 
+    Args:
+        msg (str): The input message to be encrypted.
+        auto_copy (bool): If True, copies the encrypted message to the clipboard.
 
-def mse_cipher(msg,auto_copy=True):
+    Returns:
+        str: The encrypted message.
+    """
+    if not isinstance(msg, str):
+        raise ValueError("Input must be a string.")
 
-	a  = complexify(msg)
-	b = cipher(a)
-	c = obscur(b)
-	
-	if auto_copy is True:
-		copy(c)
-	return c
+    a = complexify(msg)
+    b = cipher(a)
+    c = obscur(b)
 
+    if auto_copy:
+        copy(c)
+
+    return c
 
 def mse_decipher(msg, auto_copy=False):
+    """
+    Decrypts a message to its original form.
 
-	c = remove_group_charac_b(msg)
-	b = decipher(c)
-	a  = decomplexify(b)
+    Args:
+        msg (str): The encrypted message to be decrypted.
+        auto_copy (bool): If True, copies the decrypted message to the clipboard.
 
-	if auto_copy is True:
-		copy(a)
-	
-	return a
+    Returns:
+        str: The original message.
+    """
+    if not isinstance(msg, str):
+        raise ValueError("Input must be a string.")
 
+    c = remove_group_charac_b(msg)
+    b = decipher(c)
+    a = decomplexify(b)
+
+    if auto_copy:
+        copy(a)
+
+    return a
 

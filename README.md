@@ -1,119 +1,83 @@
-<p align="center">
-  <img src="exemple/logo.png" />
-</p>
+# MULTIPLE SUBSTITUTION ENCRYPTION PROJECT (MSE)
 
-<div align="center">
+Encryption software using multiple substitution with obfuscation, designed for creating puzzle and search games.
 
-  # PROJET MULTIPLE SUBSTITUTION ENCRYPTION (MSE)
-  -------------------------------------
+## Version Information
+- **Version Name:** MSE-V28000 [ JOSH ]
+- **Author:** Enron Group
+- **Version:** 28.0.0
+- **Release Date:** January 30, 2024
 
-  Logiciel de chiffrement par multiple substitution avec obscurcissement, pour la création de jeux d'énigme et de recherche.
-  
-  Chiffrement de texte par multiple substitution en 3 étapes.
+---
 
-  Nom de version: MSE-V27003 [ Complex Urulu ]
-  
-  Auteur: Enron Group
-  
-  version: 27.0.3
-  
-  date: 29 décembre 2023
-  
+## Updates
+### MSE-V28000
+- General code improvement and optimization.
 
-</div>
-
-
-## Mise à jour
-    MSE-V27003
-
-      - Bug inconnu à fait que nous avons écrasé cette version par une ancienne version (MSE-V27.0-Complex-Urulu)
-
-      - Correction du bug dans configs_setting.py le try remplacé par os.path.exists
-
-
-<br>
+---
 
 ## Introduction
--------------------------------------
-  Le programme de Chiffrement à Substitution Multiple (MSE) est conçu pour fournir un chiffrement de texte en utilisant trois niveaux de substitution de caractères et de complexité. Développé depuis le 22 janvier 2019, le programme propose une approche unique du chiffrement de texte.
+The Multiple Substitution Encryption (MSE) program is designed to encrypt text using three levels of character substitution and complexity. Developed since January 22, 2019, it offers a unique approach to text encryption.
 
+### Character Database (BDC)
+The files `all.txt`, `light_weight.txt`, and `ultra_light_weight.txt` contain characters used for substitution. These characters are divided into two groups:
 
-## I. Initialisation
--------------------------------------
+- **Group A:** Used to generate substitution keys.
+- **Group B:** Adds characters after substitution.
 
-  ### BDC (Base de Données de Caractère)
-  Les fichiers `all.txt`, `light_weight.txt` et `ultra_light_weight.txt` contient les caractères qui vont être utilisés pour substituer les caractères.
+Each user's encryption becomes unique when encrypting a message for the first time.
 
+- The program begins by importing essential libraries and characters from the BDC file, including lowercase and uppercase letters, numbers, punctuation, and accented characters.
+- Configuration parameters are loaded from `setting.json`, specifying the character set for encryption, inclusion of punctuation, numbers, accents, and other settings.
+- Parameters include:
+  - Length of character groups used for substitution.
+  - Length of special characters (a smaller group of characters is chosen).
+  - Number of keys.
+  - Shifting factors.
 
-  Ces caractères sont ensuite divisés en deux groupes :
+---
 
-    - Le groupe A pour générer de la clé de substitution.
+## Pseudo-Random Parameter Generator
+The program can generate pseudo-random parameters (`setting.json`). Users can opt for creating random configurations.
 
-    - Le groupe B pour ajouter des caractères, après la substitution.
+Before substitution, the program applies several operations on the text, making it complex to decrypt.
 
+---
 
-  Celui devient unique à chaque utilisateur, lorsqu'il chiffre pour la première fois un message.
+## Encryption
+### Core Process
+The basic encryption process includes three steps:
+1. Obscure the text by dividing it in two, rearranging characters, and applying additional transformations to increase complexity.
+2. Substitute characters based on encryption keys generated from the BDC character set.
+3. Introduce characters at pseudo-random positions in the text from the distinct Group B.
 
+---
 
-  - Le programme commence par importer des bibliothèques essentielles et les caractères du fichier BDC, comprenant les lettres minuscules et majuscules, les chiffres, la ponctuation et les caractères accentués.
+## Key Library Generation
+The program generates a library of substitution keys chosen from Group A.
 
+---
 
-  - Les paramètres de configuration sont chargés depuis un fichier `setting.json`, spécifiant l'ensemble de caractères à utiliser pour le chiffrement, l'inclusion de la ponctuation, des chiffres et des accents et d'autres paramètres.
+## Tools
+The `tools.py` file provides essential tools such as:
+- Generating a new BDC.
+- Deleting encryption keys.
+- Shuffling characters in the current BDC file.
+- Cleaning and removing duplicates from the BDC file.
 
+---
 
-  - Elle va aussi inclure la longueur des groupes caractères qui font être choisis pour substituer, la longueur des caractères spéciaux (un groupe de caractère est choisi pour avoir une longueur plus petite), le nombre de clés et des facteurs de déplacement.
+## Demo and Usage
+![Demo Example](exemple/captur_demo.PNG)
 
-<br>
+Try the Google Colab preview: [here](https://colab.research.google.com/drive/1WWT81_UlmaZ9kKG6FbfdQ-ac4muXzYBf?usp=sharing)
 
-## II. Générateur de paramètre pseudo aléatoire
--------------------------------------
-  - Le programme peut générer des paramètres (fichier `setting.json`) pseudo aléatoires. Les utilisateurs peuvent opter pour la création de configurations pseudo aléatoires.
+---
 
-  - Avant d'être substitué, le programme applique plusieurs opérations sur le texte avant le chiffrement, le rendant complexe à déchiffrer.
+_This is just the foundation of the code. Look at the code from another perspective, and you can see billions of possibilities!_
 
+<center>The wonderful world of secrets, letters, and numbers!</center>
 
-<br>
-
-
-## III. Chiffrement
--------------------------------------
-  - Le processus de chiffrement de base comprend 3 étapes :
-
-    - Obscurcir le texte en le divisant en deux et en réarrangeant les caractères et appliquer des transformations supplémentaires et des améliorations de complexité.
-
-    - Substituer les caractères en fonction des clés de chiffrement générées à partir de l'ensemble de caractères du fichier BDC.
-
-    - Introduire des caractères dans une position choisit dans le texte de manière pseudo aléatoires du groupe B de caractères distinct.
-
-<br>
-
-## IV. Génération d'une bibliothèque de clés
--------------------------------------
-  - Le programme génère une bibliothèque de clés de substitution choisit à partir du groupe A.
-
-<br>
-
-## V. Outils
--------------------------------------
-  - Le fichier `tools.py` offre des outils essentiels tels que la génération d'une nouvelle BDC, la suppression des clés de chiffrement, le mélange des caractères du fichier BDC actuelle et le nettoyage, suppression des doublons du fichier du fichier BDC.
-
-<br>
-
-## Démo et mise en application
--------------------------------------
-
-![Exemple d'utilisation](exemple/captur_demo.PNG)
-
-  Testez le google colab maintenant pour un petit aperçu: [ici](https://colab.research.google.com/drive/1WWT81_UlmaZ9kKG6FbfdQ-ac4muXzYBf?usp=sharing)
-
-<br>
-
-
-`Ceci est que la base du code, regardez le code d'un autre point de vue et vous pouvez voire des miiliards de possibilité !`
-
-<div align="center">
-  le monde merveilleux des secrets, des lettres et des chiffres !
-</div>
 
 
 

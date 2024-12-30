@@ -1,16 +1,15 @@
 {
-
         "cipher": "ascii_letters",
         "special_charac": "easintrluodchEASINTRLUODCH0123456789!#$%&'()*+,-./:;<=>?@[]",
         "substitue_with": "configs/all.txt",
         "cipher_punctuation": "True",
         "cipher_accent": "True",
         "cipher_digits": "True",
-        "charac_len": [10,15],
-        "len_special_charac": [4,8],
-        "key_number": [1000,2253],
-        "len_charac_group_b":[10,18],
-        "mini_add_group_b_charac": 700,
-        "max_add_group_b_charac": 762
+        "charac_len": [5, 6],
+        "len_special_charac": [3, 4],
+        "key_number": [1000, 1971],
+        "len_charac_group_b": [8, 11],
+        "mini_add_group_b_charac": 7,
+        "max_add_group_b_charac": 9
+    }
     
-}
